@@ -14,6 +14,12 @@ make build server
 1. After two button clicks, the `VIEW_COUNT` on the button and in the text field is `3`. This is expected because the button value and text field reflects the value that `VIEW_COUNT` held at the time that the view was rendered.
 2. After two button clicks, the `number` field is `3`. This is expected because, when the button is clicked, the `number` field is updated with the value that `VIEW_COUNT` held at the time that the view was rendered. We assign a new `onclick` closure each time the view is rendered (https://github.com/gesterhuizen/sauron-onclick/blob/master/src/lib.rs#L40):
 ```
+    fn view(&self) -> Node<Msg> {
+        VIEW_COUNT.fetch_add(1, Ordering::SeqCst);
+        let vc = VIEW_COUNT.load(Ordering::SeqCst);
+
+...
+
                             onclick(move |_| {
                                 sauron::log(format!("Button is clicked (VIEW_COUNT = {})", vc));
                                 Msg::Click(vc)
