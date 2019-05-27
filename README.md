@@ -19,11 +19,17 @@ make build server
         let vc = VIEW_COUNT.load(Ordering::SeqCst);
 
 ...
-
+                    [input(
+                        [
+                            r#type("button"),
+                            value(format!("VIEW_COUNT: {}", vc)),
                             onclick(move |_| {
                                 sauron::log(format!("Button is clicked (VIEW_COUNT = {})", vc));
                                 Msg::Click(vc)
                             }),
+                        ],
+                        [],
+                    )],
 ```
 
 # Actual
