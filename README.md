@@ -1,0 +1,1 @@
+Rust code illustrating unexpected behaviour (to the original author) in how the `onclick` handler in a `button` type input is updated. It is a modified version of the minimal Sauron example: https://github.com/ivanceras/sauron/tree/master/examples/minimal.
