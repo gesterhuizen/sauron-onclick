@@ -28,7 +28,7 @@ impl App {
 impl Component<Msg> for App {
     fn view(&self) -> Node<Msg> {
         VIEW_COUNT.fetch_add(1, Ordering::SeqCst);
-        let vc = VIEW_COUNT.load(Ordering::SeqCst);
+        let vc : usize = VIEW_COUNT.load(Ordering::SeqCst);
         div(
             [],
             [
