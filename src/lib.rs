@@ -3,6 +3,7 @@ use sauron::{
     html::{attributes::*, events::*, *},
     Cmd, Component, Node, Program,
 };
+
 use wasm_bindgen::prelude::*;
 
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -49,7 +50,7 @@ impl Component<Msg> for App {
                     [],
                     [text(format!(
                         "VIEW_COUNT: {}",
-                        VIEW_COUNT.load(Ordering::SeqCst)
+                        vc,
                     ))],
                 ),
                 div(
